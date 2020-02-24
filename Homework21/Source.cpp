@@ -5,6 +5,7 @@ template<typename Derived, typename Base, typename Del>
 unique_ptr<Derived, Del>
 static_unique_ptr_cast(unique_ptr<Base, Del>&& p)
 {
+
 	auto d = static_cast<Derived *>(p.release());
 	return unique_ptr<Derived, Del>(d,
 		move(p.get_deleter()));
